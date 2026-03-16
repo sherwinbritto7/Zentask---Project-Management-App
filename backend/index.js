@@ -1,6 +1,12 @@
-//fix dns error
-import dns from "node:dns/promises";
-dns.setServers(["1.1.1.1", "1.0.0.1"]);
+// fix dns error only in development
+if (process.env.NODE_ENV !== "production") {
+  try {
+    const dns = await import("node:dns/promises");
+    dns.default.setServers(["1.1.1.1", "1.0.0.1"]);
+  } catch (e) {
+    console.warn("DNS override failed, skipping...");
+  }
+}
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -15,9 +21,10 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: process.env.FRONTEND_URL === "*" ? "*" : (process.env.FRONTEND_URL || "http://localhost:5173"),
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   }),
 );
 
