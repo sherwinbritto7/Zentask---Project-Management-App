@@ -1,3 +1,4 @@
+import { BackButton } from "@/components/back-button";
 import { Loader } from "@/components/loader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -34,6 +35,14 @@ import {
 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router";
+import type { Route } from "./+types/my-tasks";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "My Tasks | ZenTask" },
+    { name: "description", content: "View and manage your tasks" },
+  ];
+}
 
 const MyTasks = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -122,10 +131,21 @@ const MyTasks = () => {
     );
   return (
     <div className="space-y-6">
-      <div className="flex items-start md:items-center justify-between">
-        <h1 className="text-2xl font-bold">My Tasks</h1>
+      <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+        <div>
+          <BackButton />
+          <div className="flex items-center gap-3 mt-4">
+            <h1 className="text-2xl font-bold">My Tasks</h1>
+            <Badge variant="outline" className="hidden md:flex shrink-0">
+              {sortedTasks?.length} tasks
+            </Badge>
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">
+            Overview of all tasks assigned to you across your workspace
+          </p>
+        </div>
 
-        <div className="flex flex-col items-start md:flex-row gap-2">
+        <div className="flex flex-col items-start md:flex-row gap-2 shrink-0">
           <Button
             variant={"outline"}
             onClick={() =>

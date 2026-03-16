@@ -1,3 +1,4 @@
+import { BackButton } from "@/components/back-button";
 import { Loader } from "@/components/loader";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,14 @@ import { format } from "date-fns";
 import { ArrowUpRight, CheckCircle, Clock, FilterIcon } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router";
+import type { Route } from "./+types/members";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Workspace Members | ZenTask" },
+    { name: "description", content: "Manage members in your workspace" },
+  ];
+}
 
 const Members = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -74,8 +83,19 @@ const Members = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-start md:items-center justify-between">
-        <h1 className="text-2xl font-bold">Workspace Members</h1>
+      <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+        <div>
+          <BackButton />
+          <div className="flex items-center gap-3 mt-4">
+            <h1 className="text-2xl font-bold">Workspace Members</h1>
+            <Badge variant="outline" className="hidden md:flex shrink-0">
+              {data?.members?.length} members
+            </Badge>
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">
+            Manage and view members belonging to the <strong>{data.name}</strong> workspace
+          </p>
+        </div>
       </div>
 
       <Input

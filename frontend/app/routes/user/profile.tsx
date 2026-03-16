@@ -32,6 +32,13 @@ import { AlertCircle, Loader, Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
+
+export function meta() {
+  return [
+    { title: "Profile | ZenTask" },
+    { name: "description", content: "Manage your account settings and preferences" },
+  ];
+}
 import { z } from "zod";
 
 const changePasswordSchema = z

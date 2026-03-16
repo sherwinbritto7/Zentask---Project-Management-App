@@ -5,8 +5,8 @@ import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "TaskHub" },
-    { name: "description", content: "Welcome to TaskHub!" },
+    { title: "ZenTask | Project Management" },
+    { name: "description", content: "Welcome to ZenTask - Simple and efficient project management." },
   ];
 }
 

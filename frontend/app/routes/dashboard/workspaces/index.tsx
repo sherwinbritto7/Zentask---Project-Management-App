@@ -16,6 +16,14 @@ import { PlusCircle, Users } from "lucide-react";
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router";
 import { format } from "date-fns";
+import type { Route } from "./+types/index";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Workspaces | ZenTask" },
+    { name: "description", content: "Organize and manage your work in different workspaces" },
+  ];
+}
 
 const Workspaces = () => {
   const [isCreatingWorkspace, setIsCreatingWorkspace] = useState(false);
@@ -31,10 +39,15 @@ const Workspaces = () => {
   return (
     <>
       <div className="space-y-8">
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl md:text-3xl font-bold">Workspaces</h2>
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div className="space-y-1">
+            <h1 className="text-2xl md:text-3xl font-bold">Workspaces</h1>
+            <p className="text-muted-foreground">
+              Create and manage workspaces to keep your projects and teams organized.
+            </p>
+          </div>
 
-          <Button onClick={() => setIsCreatingWorkspace(true)}>
+          <Button onClick={() => setIsCreatingWorkspace(true)} className="w-fit">
             <PlusCircle className="size-4 mr-2" />
             New Workspace
           </Button>

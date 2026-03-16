@@ -14,6 +14,14 @@ import type {
   WorkspaceProductivityData,
 } from "@/types";
 import { useSearchParams } from "react-router";
+import type { Route } from "./+types/index";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Dashboard | ZenTask" },
+    { name: "description", content: "Overview of your workspace productivity" },
+  ];
+}
 
 const Dashboard = () => {
   const [searchParams] = useSearchParams();
@@ -42,8 +50,11 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-8 2xl:space-y-12">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+      <div className="space-y-1">
+        <h1 className="text-2xl md:text-3xl font-bold">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Welcome back! Here's what's happening in your workspace today.
+        </p>
       </div>
 
       <StatsCard data={data.stats} />

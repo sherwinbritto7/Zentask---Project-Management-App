@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 import { useVerifyEmailMutation } from "@/hooks/use-auth";
 import { toast } from "sonner";
 
+export function meta() {
+  return [
+    { title: "Verify Email | ZenTask" },
+    { name: "description", content: "Verify your email address" },
+  ];
+}
+
 const VerifyEmail = () => {
   const [searchParams] = useSearchParams();
 

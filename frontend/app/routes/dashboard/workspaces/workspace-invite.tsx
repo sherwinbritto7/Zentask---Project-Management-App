@@ -18,6 +18,13 @@ import React from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import { toast } from "sonner";
 
+export function meta() {
+  return [
+    { title: "Workspace Invitation | ZenTask" },
+    { name: "description", content: "You have been invited to join a workspace" },
+  ];
+}
+
 const WorkspaceInvite = () => {
   const { workspaceId } = useParams();
 

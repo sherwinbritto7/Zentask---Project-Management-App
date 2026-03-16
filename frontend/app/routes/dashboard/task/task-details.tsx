@@ -23,6 +23,13 @@ import { formatDistanceToNow } from "date-fns";
 import { AlignLeft, Eye, EyeOff, Trash2, Users } from "lucide-react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "sonner";
+
+export function meta() {
+  return [
+    { title: "Task Details | ZenTask" },
+    { name: "description", content: "View and manage task details" },
+  ];
+}
 import {
   Dialog,
   DialogContent,

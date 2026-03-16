@@ -26,6 +26,13 @@ import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
 
+export function meta() {
+  return [
+    { title: "Sign In | ZenTask" },
+    { name: "description", content: "Sign in to your account" },
+  ];
+}
+
 type SigninFormData = z.infer<typeof signInSchema>;
 
 const SignIn = () => {

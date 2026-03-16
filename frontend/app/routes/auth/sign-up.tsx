@@ -25,6 +25,13 @@ import { Link, useNavigate } from "react-router";
 import { useSignUpMutation } from "@/hooks/use-auth";
 import { toast } from "sonner";
 
+export function meta() {
+  return [
+    { title: "Sign Up | ZenTask" },
+    { name: "description", content: "Create a new account" },
+  ];
+}
+
 export type SignupFormData = z.infer<typeof signUpSchema>;
 
 const SignUp = () => {

@@ -3,6 +3,7 @@ import { WorkspaceAvatar } from "./workspace-avatar";
 import { Button } from "../ui/button";
 import { Plus, UserPlus } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { BackButton } from "../back-button";
 
 interface WorkspaceHeaderProps {
   workspace: Workspace;
@@ -23,8 +24,9 @@ export const WorkspaceHeader = ({
   onInviteMember,
 }: WorkspaceHeaderProps) => {
   return (
-    <div className="space-y-8">
-      <div className="space-y-3">
+    <div className="space-y-6">
+      <BackButton />
+      <div className="space-y-3 mt-4">
         <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center gap-3">
           <div className="flex md:items-center gap-3">
             {workspace.color && (

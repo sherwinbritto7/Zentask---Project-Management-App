@@ -24,6 +24,13 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "sonner";
 
+export function meta() {
+  return [
+    { title: "Project Details | ZenTask" },
+    { name: "description", content: "View and manage project tasks" },
+  ];
+}
+
 const statusDot: Record<string, string> = {
   "To Do": "bg-muted-foreground",
   "In Progress": "bg-amber-500",

@@ -17,6 +17,13 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useSearchParams } from "react-router";
 import { toast } from "sonner";
+
+export function meta() {
+  return [
+    { title: "Reset Password | ZenTask" },
+    { name: "description", content: "Reset your account password" },
+  ];
+}
 import { z } from "zod";
 
 type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;

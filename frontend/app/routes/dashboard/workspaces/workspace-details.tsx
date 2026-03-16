@@ -8,6 +8,13 @@ import type { Project, Workspace } from "@/types";
 import { useState } from "react";
 import { useParams } from "react-router";
 
+export function meta() {
+  return [
+    { title: "Workspace Details | ZenTask" },
+    { name: "description", content: "Manage projects and members in your workspace" },
+  ];
+}
+
 const WorkspaceDetails = () => {
   const { workspaceId } = useParams<{ workspaceId: string }>();
   const [isCreateProject, setIsCreateProject] = useState(false);
