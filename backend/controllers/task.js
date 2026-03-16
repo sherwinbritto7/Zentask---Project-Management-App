@@ -100,16 +100,22 @@ const getTaskById = async (req, res) => {
 
     const workspace = project.workspace;
     
+    if (!workspace) {
+      return res.status(404).json({
+        message: "Workspace not found for this project",
+      });
+    }
+
     const isPrivileged =
-      workspace.owner.toString() === req.user._id.toString() ||
-      workspace.members.some(
+      workspace.owner?.toString() === req.user._id.toString() ||
+      workspace.members?.some(
         (m) =>
-          m.user._id.toString() === req.user._id.toString() &&
+          m.user?._id?.toString() === req.user._id.toString() &&
           ["admin", "owner"].includes(m.role)
       ) ||
-      project.members.some(
+      project.members?.some(
         (m) =>
-          m.user._id.toString() === req.user._id.toString() &&
+          m.user?._id?.toString() === req.user._id.toString() &&
           m.role === "manager"
       );
 
